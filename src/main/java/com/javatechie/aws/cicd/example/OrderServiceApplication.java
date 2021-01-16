@@ -20,7 +20,8 @@ public class OrderServiceApplication {
     private OrderDao orderDao;
 
     @GetMapping
-    public List<Order> fetchOrders() {
+    public List<Order> fetchOrdersSorted() {
+
         return orderDao.getOrders().stream().
                 sorted(Comparator.comparing(Order::getPrice)).collect(Collectors.toList());
     }
